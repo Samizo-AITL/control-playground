@@ -1,0 +1,27 @@
+* =====================================================
+*  PMOS Vg-Id curve (ngspice)
+* =====================================================
+
+.include model_clean.lib
+
+* Node definition:
+* d: drain, g: gate, s: source, b: bulk
+Vd  d  0   0         ; drain at 0 V
+Vs  s  0   1.0       ; source at 1 V
+Vg  g  0   1.0       ; gate swept from 1.0 -> 0.0
+Vb  b  0   1.0       ; bulk tied to source
+
+* MOSFET instance
+M1  d g s b  PMOS  L=1u W=10u
+
+* DC sweep:
+* PMOS の Vsg を増減させるため、
+* Vg を 1.0 V から 0.0 V に向けて掃引する。
+.dc Vg 1.0 0.0 -0.01
+
+.option numdgt=8
+
+* PMOS も NMOS と同じ列構成に合わせる
+.wrdata vgid_pmos.log  V(g) I(Vs) -I(Vs)
+
+.end

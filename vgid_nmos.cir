@@ -1,0 +1,33 @@
+* =====================================================
+*  NMOS Vg-Id curve (ngspice)
+* =====================================================
+
+.include model_clean.lib
+
+* Node definition:
+* d: drain, g: gate, s: source, b: bulk
+Vd  d  0  1.0        ; Vd = 1.0 V
+Vg  g  0  0          ; gate (swept by .dc)
+Vs  s  0  0
+Vb  b  0  0
+
+* MOSFET instance
+M1  d g s b  NMOS  L=1u W=10u
+
+* DC sweep: Vg from 0 to 1.2 V, step 0.01 V
+.dc Vg 0.0 1.2 0.01
+
+* 出力するデータ：
+* 1列目: Vg (= V(g))
+* 2列目: Idraw (ngspice内部の電流方向)
+* 3列目: Id = -Idraw (ドレインからソースへ流れる電流を正方向に)
+*
+* ngspice の電源電流 I(Vd) は
+*   - 電源から回路へ流れる方向が正
+* なので、MOSFET Id（d→s）として使うには -I(Vd) を取る。
+
+.option numdgt=8
+
+.wrdata vgid_nmos.log  V(g) I(Vd) -I(Vd)
+
+.end
