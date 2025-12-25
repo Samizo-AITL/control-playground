@@ -7,9 +7,8 @@
 
   <style>
     :root {
-      --bg: #0f1117;
-      --fg: #e6e6eb;
-      --accent: #5ddcff;
+      --bg: #0b0d12;
+      --fg: #eaeaf0;
     }
 
     html, body {
@@ -26,10 +25,10 @@
     }
 
     header h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin: 0;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     main {
@@ -37,11 +36,11 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem;
-      gap: 1.5rem;
+      gap: 1.2rem;
     }
 
     canvas {
-      background: #111;
+      background: radial-gradient(circle at center, #12141c, #080a0f);
       border: 1px solid #222;
     }
 
@@ -51,17 +50,17 @@
     }
 
     a.button {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       padding: 0.6rem 1.2rem;
-      border: 1px solid var(--accent);
-      color: var(--accent);
+      border: 1px solid #888;
+      color: #ddd;
       text-decoration: none;
       font-size: 0.9rem;
       transition: all 0.2s ease;
     }
 
     a.button:hover {
-      background: var(--accent);
+      background: #fff;
       color: #000;
     }
   </style>
@@ -69,14 +68,14 @@
 
 <body>
   <header>
-    <h1>Animation Test / Motion Visualization</h1>
+    <h1>Animation Test / Color Harmonic Motion</h1>
   </header>
 
   <main>
-    <canvas id="canvas" width="640" height="240"></canvas>
+    <canvas id="canvas" width="720" height="280"></canvas>
 
     <div class="caption">
-      Harmonic motion rendered with Canvas & requestAnimationFrame
+      Harmonic motion + dynamic HSL color mapping
     </div>
 
     <a class="button" href="./docs/">Documentation →</a>
@@ -84,10 +83,10 @@
 
   <script>
     /**
-     * Professional minimal animation demo
-     * - Deterministic motion
-     * - No external dependencies
-     * - rAF timing
+     * Colorful professional animation demo
+     * - Harmonic motion
+     * - Time-continuous color (HSL)
+     * - Motion trail
      */
 
     const canvas = document.getElementById("canvas");
@@ -99,28 +98,45 @@
     let t = 0;
 
     function draw() {
-      ctx.clearRect(0, 0, W, H);
+      // fade for trail effect
+      ctx.fillStyle = "rgba(11, 13, 18, 0.25)";
+      ctx.fillRect(0, 0, W, H);
 
       // axis
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
       ctx.beginPath();
       ctx.moveTo(0, H / 2);
       ctx.lineTo(W, H / 2);
       ctx.stroke();
 
-      // harmonic motion
-      const x = W / 2 + Math.sin(t) * 200;
-      const y = H / 2;
+      // motion
+      const A = 260;
+      const x = W / 2 + Math.sin(t) * A;
+      const y = H / 2 + Math.sin(t * 2) * 40;
 
-      ctx.fillStyle = "#5ddcff";
+      // color (time-based hue)
+      const hue = (t * 40) % 360;
+      ctx.fillStyle = `hsl(${hue}, 90%, 60%)`;
+
       ctx.beginPath();
-      ctx.arc(x, y, 8, 0, Math.PI * 2);
+      ctx.arc(x, y, 9, 0, Math.PI * 2);
       ctx.fill();
 
-      t += 0.03;
+      // glow
+      ctx.strokeStyle = `hsla(${hue}, 100%, 70%, 0.6)`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x, y, 14, 0, Math.PI * 2);
+      ctx.stroke();
+
+      t += 0.035;
 
       requestAnimationFrame(draw);
     }
+
+    // initial clear
+    ctx.fillStyle = "#0b0d12";
+    ctx.fillRect(0, 0, W, H);
 
     draw();
   </script>
