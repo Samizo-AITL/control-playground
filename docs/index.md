@@ -5,6 +5,16 @@ title: Control Playground
 
 # Control Playground
 
+---
+
+## 🔗 Links
+
+| Language | GitHub Pages 🌐 | GitHub 💻 |
+|----------|----------------|-----------|
+| 🇺🇸 English | [![GitHub Pages EN](https://img.shields.io/badge/GitHub%20Pages-English-brightgreen?logo=github)](https://samizo-aitl.github.io/control-playground/) | [![GitHub Repo EN](https://img.shields.io/badge/GitHub-English-blue?logo=github)](https://github.com/Samizo-AITL/control-playground/tree/main) |
+
+---
+
 固定PID制御器が、  
 **色付き（低周波）かつ状態依存の外乱**にさらされたとき、  
 **時間応答だけ**を用いて挙動を観測するためのページです。
