@@ -15,16 +15,17 @@ title: Control Playground
 
 ---
 
-固定PID制御器が、  
-**色付き（低周波）かつ状態依存の外乱**にさらされたとき、  
-**時間応答だけ**を用いて挙動を観測するためのページです。
+A page to observe the behavior of a **fixed PID controller**  
+when subjected to **colored (low-frequency) and state-dependent disturbances**,  
+using **time responses only**.
 
-- スライダーなし  
-- 位置アニメなし  
-- 説明過多なし  
+- No sliders  
+- No position animation  
+- No excessive explanation  
 
-**y(t), setpoint(t), disturbance(t)**  
-それだけが表示されます。
+Only these signals are shown:
+
+**y(t), setpoint(t), disturbance(t)**
 
 ---
 
@@ -39,18 +40,18 @@ title: Control Playground
 
 ## What this shows
 
-- PID が「追従できているように見える」理由
-- なぜ低周波・状態依存外乱が効くのか
-- どこで位相・積分が破綻するのか
+- Why the PID *appears* to be tracking correctly  
+- Why low-frequency, state-dependent disturbances are effective  
+- Where phase and integral action break down  
 
-**結論はコードではなく、波形が語ります。**
+**The conclusion is not in the code — the waveforms speak for themselves.**
 
 ---
 
 ## Controls
 
 - `R` : Reset  
-- `SPACE` : 外乱注入（観測用）
+- `SPACE` : Inject disturbance (for observation)
 
 ---
 
