@@ -1,5 +1,5 @@
 ---
-title: "control^playground"
+title: "control-playground"
 description: "colored (low-frequency) and state-dependent disturbances"
 ---
 
