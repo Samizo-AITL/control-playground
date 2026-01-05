@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Control Playground
+title: "control^playground"
+description: "colored (low-frequency) and state-dependent disturbances"
 ---
 
 # Control Playground
