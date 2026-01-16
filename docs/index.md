@@ -76,7 +76,7 @@ If you need truth, look at the time response.
 
 ## License
 
-[![Hybrid License](https://img.shields.io/badge/license-Hybrid-blueviolet)](https://samizo-aitl.github.io/control-playgrpund//#-license)
+[![Hybrid License](https://img.shields.io/badge/license-Hybrid-blueviolet)](https://samizo-aitl.github.io/control-playgrpund/docs/#---license)
 
 | 📌 Item | License | Description |
 |--------|---------|-------------|
