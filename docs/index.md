@@ -5,6 +5,8 @@ description: "colored (low-frequency) and state-dependent disturbances"
 
 # Control Playground
 
+[![Back to Portal (EN)](https://img.shields.io/badge/Back%20to%20Portal-0B5FFF?style=for-the-badge&logo=homeassistant&logoColor=white)](https://samizo-aitl.github.io/portal/en/)
+
 ---
 
 ## 🔗 Links
